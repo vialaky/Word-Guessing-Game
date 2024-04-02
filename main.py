@@ -15,7 +15,7 @@ def display_hangman(tries):
     Getting the current state.
     """
     stages = [  # final state: head, torso, both arms, both legs
-                '''
+        '''
                    --------
                    |      |
                    |      O
@@ -24,8 +24,8 @@ def display_hangman(tries):
                    |     / \\
                    -
                 ''',
-                # head, torso, both arms, one leg
-                '''
+        # head, torso, both arms, one leg
+        '''
                    --------
                    |      |
                    |      O
@@ -34,8 +34,8 @@ def display_hangman(tries):
                    |     / 
                    -
                 ''',
-                # head, torso, both arms
-                '''
+        # head, torso, both arms
+        '''
                    --------
                    |      |
                    |      O
@@ -44,8 +44,8 @@ def display_hangman(tries):
                    |      
                    -
                 ''',
-                # head, torso and one arm
-                '''
+        # head, torso and one arm
+        '''
                    --------
                    |      |
                    |      O
@@ -54,8 +54,8 @@ def display_hangman(tries):
                    |     
                    -
                 ''',
-                # head and torso
-                '''
+        # head and torso
+        '''
                    --------
                    |      |
                    |      O
@@ -64,8 +64,8 @@ def display_hangman(tries):
                    |     
                    -
                 ''',
-                # head
-                '''
+        # head
+        '''
                    --------
                    |      |
                    |      O
@@ -74,8 +74,8 @@ def display_hangman(tries):
                    |     
                    -
                 ''',
-                # initial state
-                '''
+        # initial state
+        '''
                    --------
                    |      |
                    |      
@@ -88,5 +88,20 @@ def display_hangman(tries):
     return stages[tries]
 
 
-word = get_word()
-print(word)
+def play(word):
+    word_completion = '_' * len(word)  # string containing _ characters for each letter of the intended word
+    guessed = False  # signal mark
+    guessed_letters = []  # list of already guessed letters
+    guessed_words = []  # list of already guessed words
+    tries = 6  # number of attemps
+
+    print("Let's play the game!")
+
+    # Show the initial state
+    print(display_hangman(tries))
+    print(word_completion)
+
+
+hidden_word = get_word()
+print(hidden_word)
+play(hidden_word)
