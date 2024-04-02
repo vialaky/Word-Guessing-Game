@@ -109,6 +109,8 @@ def check_input(user_input):
 
     print(f'You entered: {user_input.upper()}')
 
+    return user_input.upper()
+
 
 def play(word):
     word_completion = '_' * len(word)  # string containing _ characters for each letter of the intended word
@@ -119,14 +121,26 @@ def play(word):
 
     print("Let's play the game!")
 
-    # Show the initial state
-    print(display_hangman(tries))
-    print(word_completion)
+    # guessed_letters.append('A')
 
     while True:
+
+        # Show the initial state
+        print(display_hangman(tries))
+        print(word_completion)
+
         print('Enter the letter or whole word:')
         user_attemp = input()
-        check_input(user_attemp)
+
+        user_attemp = check_input(user_attemp)
+
+        if user_attemp in guessed_letters:
+            print('This letter has already been guessed. Try again.')
+            continue
+        elif user_attemp in guessed_words:
+            print('This word has already been guessed. Try again.')
+            continue
+
         break
 
 
