@@ -10,5 +10,83 @@ def get_word():
     return choice(word_list).upper()
 
 
+def display_hangman(tries):
+    """
+    Getting the current state.
+    """
+    stages = [  # final state: head, torso, both arms, both legs
+                '''
+                   --------
+                   |      |
+                   |      O
+                   |     \\|/
+                   |      |
+                   |     / \\
+                   -
+                ''',
+                # head, torso, both arms, one leg
+                '''
+                   --------
+                   |      |
+                   |      O
+                   |     \\|/
+                   |      |
+                   |     / 
+                   -
+                ''',
+                # head, torso, both arms
+                '''
+                   --------
+                   |      |
+                   |      O
+                   |     \\|/
+                   |      |
+                   |      
+                   -
+                ''',
+                # head, torso and one arm
+                '''
+                   --------
+                   |      |
+                   |      O
+                   |     \\|
+                   |      |
+                   |     
+                   -
+                ''',
+                # head and torso
+                '''
+                   --------
+                   |      |
+                   |      O
+                   |      |
+                   |      |
+                   |     
+                   -
+                ''',
+                # head
+                '''
+                   --------
+                   |      |
+                   |      O
+                   |    
+                   |      
+                   |     
+                   -
+                ''',
+                # initial state
+                '''
+                   --------
+                   |      |
+                   |      
+                   |    
+                   |      
+                   |     
+                   -
+                '''
+    ]
+    return stages[tries]
+
+
 word = get_word()
 print(word)
