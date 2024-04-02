@@ -134,10 +134,10 @@ def play(word):
 
         user_attemp = check_input(user_attemp)
 
-        if user_attemp in guessed_letters:
+        if len(user_attemp) == 1 and user_attemp in guessed_letters:
             print('This letter has already been guessed. Try again.')
             continue
-        elif user_attemp in guessed_words:
+        elif len(user_attemp) > 1 and user_attemp in guessed_words:
             print('This word has already been guessed. Try again.')
             continue
 
