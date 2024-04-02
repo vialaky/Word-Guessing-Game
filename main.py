@@ -112,6 +112,14 @@ def check_input(user_input):
     return user_input.upper()
 
 
+def show_guessed_letter(completion, user_input):
+    print('You guessed the letter!')
+    for i in range(len(hidden_word)):
+        if hidden_word[i] == user_input:
+            completion = completion[:i] + user_input + completion[i + 1:]
+    return completion
+
+
 def play(word):
     word_completion = '_' * len(word)  # string containing _ characters for each letter of the intended word
     guessed = False  # signal mark
@@ -120,8 +128,6 @@ def play(word):
     tries = 6  # number of attemps
 
     print("Let's play the game!")
-
-    # guessed_letters.append('A')
 
     while True:
 
@@ -141,9 +147,22 @@ def play(word):
             print('This word has already been guessed. Try again.')
             continue
 
-        break
+        if len(user_attemp) == 1 and user_attemp in word:
+            word_completion = show_guessed_letter(word_completion, user_attemp)
+            guessed_letters.append(user_attemp)
 
 
+
+
+        else:
+            tries -= 1
+            if len(user_attemp) == 1:
+                guessed_letters.append(user_attemp)
+            elif len(user_attemp) > 1:
+                guessed_words.append(user_attemp)
+
+
+# Start the game
 hidden_word = get_word()
 print(hidden_word)
 play(hidden_word)
