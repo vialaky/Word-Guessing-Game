@@ -1,3 +1,4 @@
+import string
 from random import choice
 
 
@@ -88,6 +89,27 @@ def display_hangman(tries):
     return stages[tries]
 
 
+def check_input(user_input):
+    while not user_input.isalpha():
+        print("It's not a text. Try again.")
+        user_input = input()
+    if len(user_input) == 1:
+        while user_input not in string.ascii_letters:
+            print('Please check the keyboard layout and try again:')
+            user_input = input()
+    elif len(user_input) > 1:
+        while True:
+            for ch in user_input:
+                if ch not in string.ascii_letters:
+                    print('Please check the keyboard layout and try again:')
+                    user_input = input()
+                    break
+            else:
+                break
+
+    print(f'You entered: {user_input.upper()}')
+
+
 def play(word):
     word_completion = '_' * len(word)  # string containing _ characters for each letter of the intended word
     guessed = False  # signal mark
@@ -100,6 +122,12 @@ def play(word):
     # Show the initial state
     print(display_hangman(tries))
     print(word_completion)
+
+    while True:
+        print('Enter the letter or whole word:')
+        user_attemp = input()
+        check_input(user_attemp)
+        break
 
 
 hidden_word = get_word()
