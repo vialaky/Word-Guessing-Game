@@ -1,4 +1,4 @@
-# Word-Guessing-Game
+# Word-Guessing-Game (Hangman)
 
 ## Project Description
 
