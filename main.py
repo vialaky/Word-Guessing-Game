@@ -7,7 +7,7 @@ def get_word():
     """
     with open('word_list.txt', 'r') as file:
         word_list = [line.strip() for line in file]
-    return choice(word_list)
+    return choice(word_list).upper()
 
 
 word = get_word()
