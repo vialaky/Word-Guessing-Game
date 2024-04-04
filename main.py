@@ -120,6 +120,19 @@ def show_guessed_letter(completion, user_input):
     return completion
 
 
+def replay():
+    """
+    Proposal to continue the game.
+    """
+    print('Wanna replay (Y/N)?')
+    if input().lower() in ['y', 'Y']:
+        print("Let's continue the game...\n")
+        return True
+    else:
+        print('Thanks for playing the Word Guessing Game. See you...')
+        return False
+
+
 def play(word):
     word_completion = '_' * len(word)  # string containing _ characters for each letter of the intended word
     guessed = False  # signal mark
@@ -173,6 +186,9 @@ def play(word):
 
 
 # Start the game
-hidden_word = get_word()
-# print(hidden_word)
-play(hidden_word)
+while True:
+    hidden_word = get_word()
+    play(hidden_word)
+
+    if not replay():
+        break
