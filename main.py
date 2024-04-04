@@ -129,7 +129,7 @@ def play(word):
 
     print("Let's play the game!")
 
-    while True:
+    while not guessed:
 
         # Show the initial state
         print(display_hangman(tries))
@@ -150,12 +150,14 @@ def play(word):
         if len(user_attemp) == 1 and user_attemp in word:
             word_completion = show_guessed_letter(word_completion, user_attemp)
             guessed_letters.append(user_attemp)
+            if word_completion == word:
+                print('Congratulations, you guessed the word! You won!')
+                print(hidden_word)
+                guessed = True
         elif len(user_attemp) > 1 and user_attemp == word:
             print('Congratulations, you guessed the word! You won!')
-            break
-
-
-
+            print(hidden_word)
+            guessed = True
 
         else:
             tries -= 1
@@ -163,6 +165,11 @@ def play(word):
                 guessed_letters.append(user_attemp)
             elif len(user_attemp) > 1:
                 guessed_words.append(user_attemp)
+            if tries == 0:
+                print('Yoг lose (((')
+                print(hidden_word)
+                print(display_hangman(tries))
+                break
 
 
 # Start the game
