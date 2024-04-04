@@ -13,7 +13,7 @@ def get_word():
 
 def display_hangman(tries):
     """
-    Getting the current state.
+    Gets the current state.
     """
     stages = [  # final state: head, torso, both arms, both legs
         '''
@@ -90,6 +90,9 @@ def display_hangman(tries):
 
 
 def check_input(user_input):
+    """
+    Checks if input is valid
+    """
     while not user_input.isalpha():
         print("It's not a text. Try again.")
         user_input = input()
@@ -113,6 +116,9 @@ def check_input(user_input):
 
 
 def show_guessed_letter(completion, user_input):
+    """
+    Changes the hidden letters to guessed
+    """
     print('You guessed the letter!')
     for i in range(len(hidden_word)):
         if hidden_word[i] == user_input:
@@ -125,7 +131,7 @@ def replay():
     Proposal to continue the game.
     """
     print('Wanna replay (Y/N)?')
-    if input().lower() in ['y', 'Y']:
+    if input().lower() == 'y':
         print("Let's continue the game...\n")
         return True
     else:
@@ -134,6 +140,9 @@ def replay():
 
 
 def play(word):
+    """
+    The main game loop
+    """
     word_completion = '_' * len(word)  # string containing _ characters for each letter of the intended word
     guessed = False  # signal mark
     guessed_letters = []  # list of already guessed letters
@@ -187,6 +196,7 @@ def play(word):
 
 # Start the game
 while True:
+    print('Welcome to the Word Guessing Game!')
     hidden_word = get_word()
     play(hidden_word)
 
