@@ -150,6 +150,9 @@ def play(word):
         if len(user_attemp) == 1 and user_attemp in word:
             word_completion = show_guessed_letter(word_completion, user_attemp)
             guessed_letters.append(user_attemp)
+        elif len(user_attemp) > 1 and user_attemp == word:
+            print('Congratulations, you guessed the word! You won!')
+            break
 
 
 
@@ -164,5 +167,5 @@ def play(word):
 
 # Start the game
 hidden_word = get_word()
-print(hidden_word)
+# print(hidden_word)
 play(hidden_word)
